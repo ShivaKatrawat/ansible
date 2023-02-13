@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep1
+spec:
+  progressDeadlineSeconds: 2
+  replicas: 10
+  revisionHistoryLimit: 100
+  selector:
+    matchLabels:
+      env: prod
+  strategy:
+    rollingUpdate:
+      maxSurge:
+      maxUnavailable:
+  template:
+    metadata:
+      labels: 
+        env: prod
+    spec:
+      containers:
+      - name: c1
+        image: nginx
+        readinessProbe:
+          tcpSocket:
+            port: 90
+          initialDelaySeconds: 10
+          periodSeconds: 12
+
+    
+
