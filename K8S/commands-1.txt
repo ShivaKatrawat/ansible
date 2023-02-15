@@ -1,0 +1,18 @@
+
+
+docker run 0576df221c0b
+docker update --restart=always 0576df221c0b
+Shivas-MBP:K8S shivakatravath$ docker update --restart=unless-stopped 389698e2f302
+
+
+
+docker exec -it <CONTAINER_NAME> agent status
+docker logs --tail 50 --follow --timestamps <CONTAINER_NAME>
+
+docker update --restart=no my-container
+
+docker run -e DD_API_KEY=f8799642f17bf55b76ef0c9401808d59 389698e2f302
+
+docker run -d --name dd-agent -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=f8799642f17bf55b76ef0c9401808d59 -e DD_SITE="datadoghq.com" gcr.io/datadoghq/agent:7
+
+kubectl create secret generic datadog-secret --from-literal api-key=f8799642f17bf55b76ef0c9401808d59 --from-literal app-key=f8799642f17bf55b76ef0c9401808d59
